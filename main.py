@@ -1,29 +1,32 @@
+from string import ascii_lowercase, ascii_uppercase
 from sys import argv
 
-DEFAULT_SHIFT: int = 1
-DEFAULT_CHARSETS: list = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+DEFAULT_SHIFT = 1
+DEFAULT_CHARACTER_SETS = [ascii_lowercase, ascii_uppercase]
 
 
 def caesar_cipher(
-    chars_to_convert: str,
+    message: str,
     shift: int = DEFAULT_SHIFT,
-    charsets: list = DEFAULT_CHARSETS,
+    character_sets: list[str] = DEFAULT_CHARACTER_SETS,
 ) -> str:
-    if not isinstance(chars_to_convert, str):
-        raise TypeError("chars_to_convert must be of type str")
+    ciphered_message = ""
 
-    ciphered: str = ""
-    for char in chars_to_convert:
-        for charset in charsets:
-            if char in charset:
-                new_char_index = charset.index(char) + shift
-                while new_char_index + 1 > len(charset):
-                    new_char_index -= len(charset)
-                ciphered += charset[new_char_index]
-                break
+    for character in message:
+        for character_set in character_sets:
+            try:
+                current_index = character_set.index(character)
+            except ValueError:
+                continue
+
+            new_index = (current_index + shift) % len(character_set)
+
+            ciphered_message += character_set[new_index]
+            break
         else:
-            ciphered += char
-    return ciphered
+            ciphered_message += character
+
+    return ciphered_message
 
 
 if __name__ == "__main__":
