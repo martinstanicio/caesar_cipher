@@ -9,7 +9,3 @@ $ python3 index.py
 # run tests
 $ python index_test.py
 ```
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
