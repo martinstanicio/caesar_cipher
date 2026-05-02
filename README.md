@@ -1,11 +1,11 @@
-# caesar_cipher
+# Caesar Cipher
 
 ## Usage guide
 
 ```bash
 # run cipher
-$ python3 index.py
+$ uv run main.py
 
 # run tests
-$ python index_test.py
+$ uv run index_test.py
 ```
