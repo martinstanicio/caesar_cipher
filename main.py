@@ -1,5 +1,4 @@
 from string import ascii_lowercase, ascii_uppercase
-from sys import argv
 
 DEFAULT_SHIFT = 1
 DEFAULT_CHARACTER_SETS = [ascii_lowercase, ascii_uppercase]
@@ -30,20 +29,23 @@ def caesar_cipher(
 
 
 if __name__ == "__main__":
-    chars_to_convert: str = ""
-    shift: int = None
+    message = input("message to cipher:\n> ")
+    print()
+
+    if not len(message):
+        print("message cannot be empty")
+        exit()
+
     try:
-        _, *to_convert, shift = argv
-
-        for item in to_convert:
-            chars_to_convert += f"{item} "
-        chars_to_convert.strip()
-
-        shift = int(shift)
+        shift = int(
+            input(f"cipher shift (defaults to {DEFAULT_SHIFT}):\n> ") or DEFAULT_SHIFT
+        )
+        print()
     except ValueError:
-        if len(argv) != 1:
-            print("invalid args, please input manually")
-        chars_to_convert = input("str to convert:\n> ")
-        shift = int(input(f"key (defaults to {DEFAULT_SHIFT}):\n> ") or DEFAULT_SHIFT)
+        print()
+        print("shift must be an integer")
+        exit()
 
-    print(caesar_cipher(chars_to_convert, shift))
+    ciphered_message = caesar_cipher(message, shift)
+
+    print(f"{ciphered_message =}")
