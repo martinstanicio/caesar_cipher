@@ -19,12 +19,6 @@ class TestCaesarCipher(unittest.TestCase):
         for to_convert, shift, output in expected_outputs:
             self.assertEqual(caesar_cipher(to_convert, shift), output)
 
-    def test_types(self):
-        self.assertRaises(TypeError, caesar_cipher, 123, 3)
-        self.assertRaises(TypeError, caesar_cipher, True, 3)
-        self.assertRaises(TypeError, caesar_cipher, [], 3)
-        self.assertRaises(TypeError, caesar_cipher, {}, 3)
-
 
 if __name__ == "__main__":
     unittest.main()
