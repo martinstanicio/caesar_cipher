@@ -1,6 +1,5 @@
 from sys import argv
 
-
 DEFAULT_SHIFT: int = 1
 DEFAULT_CHARSETS: list = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 
